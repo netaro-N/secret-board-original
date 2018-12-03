@@ -22,20 +22,21 @@ html(lang="jp")
     h2 投稿一覧
     each post in posts
       div.card.my-3.border-dark
-        div.card-header.bg-dark
+        div.card-header.bg-light.text-dark
             - var isPostedByAdmin = (post.postedBy === 'admin')
             if isPostedByAdmin
              span #{post.id} : 管理人 ★
             else
               - var originalTrackingId = post.trackingCookie ? post.trackingCookie.split('_')[0] : ''
               span #{post.id} : ID:#{originalTrackingId}      
-        div.card-body.bg-light.text-dark
+        div.card-body.bg-white.text-dark
           p(style="white-space:pre; overflow:auto;").font-weight-bold #{post.content}
-        div.card-footer.bg-dark
+        div.card-footer.bg-light.text-dark
             div 投稿日時: #{post.formattedCreatedAt}
             - var isAdmin = (user === 'admin')
             if isAdmin
-              div 投稿者: #{post.postedBy}
+              div.float-left 投稿者： 
+              span.text-danger #{post.postedBy}
             - var isDeletable = (user === post.postedBy || isAdmin)
             if isDeletable
               form(method="post" action="/posts?delete=1")
