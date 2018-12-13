@@ -15,13 +15,15 @@ html(lang="jp")
     h2 新規投稿
     form(method="post" action="/posts")
       div.form-group
-        textarea(name="content" rows="4" placeholder="※半角+は表示されないので、使用する際は全角＋記号を用いてください").form-control
+        textarea(name="content" rows="4" placeholder="例）「>>5 さんこんにちは・・・」　など入力することで、レス機能をお使いいただけます。 ").form-control
         input(type="hidden" name="oneTimeToken" value=oneTimeToken)
       div.form-group
         button(type="submit").btn.btn-success.btn-lg 投稿
     h2 投稿一覧
     each post in posts
-      div.card.my-3.border-dark
+      div.card.my-3.border-dark(id=post.id)
+        div.card-link
+          a(href=post.hrefAnchor) #{post.hrefNumberId}
         div.card-header.bg-light.text-dark
             - var isPostedByAdmin = (post.postedBy === 'admin')
             if isPostedByAdmin

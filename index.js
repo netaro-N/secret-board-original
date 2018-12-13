@@ -6,11 +6,11 @@ const router = require('./lib/router');
 const crypto = require("crypto");
 
 //cryptoで使える暗号化アルゴリズムを確認してみた
-const cipers = crypto.getCiphers();
-console.log(cipers);
+// const cipers = crypto.getCiphers();
+// console.log(cipers);
 //cryptoで使えるハッシュアルゴリズムを確認してみた
-const hashes = crypto.getHashes();
-console.log(hashes);
+// const hashes = crypto.getHashes();
+// console.log(hashes);
 
 const basic = auth.basic({
   realm: 'Enter username and password.',
